@@ -11,4 +11,7 @@ APP_ROOT = File.dirname(__FILE__)
 
 # special ruby variable that Ruby will look in for files
 $:.unshift( File.join(APP_ROOT, 'lib') )
-require guide
+require 'guide'
+
+guide = Guide.new('restaurants.txt')
+guide.launch!
