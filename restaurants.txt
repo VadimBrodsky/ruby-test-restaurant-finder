@@ -1,2 +1,3 @@
 Kava Bean	Coffee Shop	5
 Crabby Joes	American	15
+burger works	burgers	20
