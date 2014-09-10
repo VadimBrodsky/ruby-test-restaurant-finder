@@ -35,9 +35,16 @@ class Restaurant
 	end
 
 
-	def self.saved_restautants
-		# read the restaurant file
-		# return instances of restaurant
+	def self.saved_restaurants
+		restaurants = []
+		if file_usable?
+			file = File.new(@@filepath, 'r')
+			file.each_line do |line|
+				restaurants << Restaurant.new.import_line(line.chomp)
+			end
+			file.close
+		end
+		return restaurants
 	end
 
 
@@ -61,6 +68,12 @@ class Restaurant
 		@name    = args[:name]    || ""
 		@cuisine = args[:cuisine] || ""
 		@price   = args[:price]   || ""
+	end
+
+	def import_line(line)
+		line_aray = line.split("\t")
+		@name, @cuisine, @price = line_aray
+		return self
 	end
 
 	def save
